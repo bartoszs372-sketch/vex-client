@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#070711">
   <meta name="description" content="VEX CLIENT — galaktyczny mod klienta do Minecraft Java 1.21.4. Pobierz wersję 1.0.0 dla Fabric.">
-  <meta property="og:title" content="VEX CLIENT — Beyond the ordinary">
+  <meta property="og:title" content="VEX CLIENT — Poza schematem">
   <meta property="og:description" content="Wejdź na wyższy poziom. Poznaj VEX CLIENT do Minecraft 1.21.4.">
   <meta property="og:type" content="website">
-  <title>VEX CLIENT — Beyond the ordinary</title>
+  <title>VEX CLIENT — Poza schematem</title>
   <style>
     :root {
       color-scheme: dark;
@@ -55,8 +55,7 @@
     .topbar { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(183, 166, 255, .1); background: rgba(7, 7, 17, .72); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); }
     .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 26px; }
     .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; font-weight: 900; letter-spacing: .13em; font-size: 16px; }
-    .brand-mark { position: relative; width: 37px; height: 37px; display: grid; place-items: center; border: 1px solid rgba(175, 145, 255, .56); border-radius: 12px; color: white; background: linear-gradient(145deg, rgba(137, 91, 255, .34), rgba(66, 193, 255, .09)); box-shadow: inset 0 0 18px rgba(155, 102, 255, .18), 0 0 24px rgba(131, 79, 255, .14); }
-    .brand-mark svg { width: 24px; height: 24px; filter: drop-shadow(0 0 6px rgba(166, 128, 255, .8)); }
+    .brand-logo { width: 49px; height: 34px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 8px rgba(35, 152, 255, .55)); }
     .brand span:last-child { color: #b9a0ff; }
     .nav-links { display: flex; align-items: center; gap: 30px; color: #c5c4df; font-size: 13px; }
     .nav-links a { position: relative; padding: 10px 0; transition: color .2s ease; }
@@ -97,12 +96,10 @@
     .orbital::after { right: 10%; bottom: 25%; width: 5px; height: 5px; background: #d6a7ff; box-shadow: 0 0 15px 4px rgba(194, 133, 255, .7); }
     .orbital.orbital-two { width: 90%; transform: rotateX(67deg) rotateZ(53deg); border-color: rgba(94, 192, 255, .15); animation: orbitReverse 34s linear infinite; }
     .orbital.orbital-three { width: 73%; transform: rotateX(70deg) rotateZ(15deg); border-style: dashed; border-color: rgba(194, 130, 255, .19); animation-duration: 44s; }
-    .planet { position: relative; display: grid; place-items: center; width: 225px; aspect-ratio: 1; border-radius: 50%; transform-style: preserve-3d; animation: planetFloat 6s ease-in-out infinite; }
-    .planet::before { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: radial-gradient(circle at 32% 25%, rgba(215, 202, 255, .96) 0%, rgba(151, 113, 255, .96) 8%, rgba(86, 72, 177, .95) 28%, rgba(32, 33, 81, .97) 57%, #080915 78%); box-shadow: inset -28px -20px 45px rgba(0,0,0,.72), inset 10px 10px 25px rgba(179, 145, 255, .3), 0 0 45px rgba(127, 85, 255, .35), 0 0 100px rgba(89, 125, 255, .15); }
-    .planet::after { content: ""; position: absolute; inset: 1px; border-radius: 50%; border: 1px solid rgba(184, 164, 255, .5); box-shadow: 0 0 25px rgba(152, 106, 255, .23); }
-    .planet-logo { z-index: 2; font-size: 72px; line-height: 1; font-weight: 1000; letter-spacing: -.12em; padding-right: 9px; color: white; text-shadow: 0 0 13px rgba(255,255,255,.55), 0 0 32px rgba(167, 132, 255, .9); transform: translateY(-2px); }
-    .planet-ring { position: absolute; width: 143%; height: 37%; border: 2px solid transparent; border-top-color: rgba(159, 215, 255, .92); border-bottom-color: rgba(179, 126, 255, .78); border-radius: 50%; transform: rotate(-25deg); filter: drop-shadow(0 0 7px rgba(125, 154, 255, .75)); }
-    .planet-ring::after { content: ""; position: absolute; inset: -5px 4px; border: 1px solid rgba(177, 153, 255, .28); border-radius: 50%; }
+    .hero-logo-wrap { position: relative; z-index: 2; display: grid; place-items: center; width: min(100%, 480px); transform-style: preserve-3d; will-change: transform; animation: logoFloat 6s ease-in-out infinite; }
+    .hero-client-logo { position: relative; z-index: 1; display: block; width: 100%; height: auto; object-fit: contain; mix-blend-mode: screen; transform-origin: center; will-change: filter; animation: logoGlow 4.8s ease-in-out infinite; filter: drop-shadow(0 0 18px rgba(23, 125, 255, .62)) drop-shadow(0 0 42px rgba(0, 178, 255, .38)); }
+    .hero-logo-wrap::before { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; border-radius: 26%; background: linear-gradient(112deg, transparent 35%, rgba(88, 211, 255, 0) 43%, rgba(125, 224, 255, .26) 49%, rgba(212, 197, 255, .18) 52%, transparent 61%); background-size: 230% 100%; mix-blend-mode: screen; mask-image: radial-gradient(ellipse at center, #000 18%, transparent 76%); animation: logoShine 6.2s ease-in-out infinite; }
+    .hero-logo-wrap::after { content: ""; position: absolute; z-index: -1; width: 74%; height: 55%; border-radius: 50%; background: radial-gradient(ellipse, rgba(0, 120, 255, .34), rgba(0, 190, 255, .19) 44%, transparent 72%); filter: blur(25px); animation: logoHalo 4s ease-in-out infinite; }
     .float-card { position: absolute; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid rgba(170, 155, 240, .2); border-radius: 15px; background: rgba(12, 12, 31, .74); backdrop-filter: blur(18px); box-shadow: 0 16px 45px rgba(0,0,0,.18); animation: cardFloat 5s ease-in-out infinite; }
     .float-card .mini-icon { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 10px; color: #d8ccff; background: linear-gradient(135deg, rgba(137, 88, 255, .28), rgba(77, 187, 255, .12)); }
     .float-card svg { width: 17px; height: 17px; }
@@ -110,6 +107,7 @@
     .float-card small { display: block; color: #9c9bbd; font-size: 9px; margin-top: 1px; }
     .float-card.card-top { top: 10%; right: -1%; animation-delay: -1.2s; }
     .float-card.card-bottom { left: -1%; bottom: 12%; animation-delay: -2.8s; }
+    .preview-caption { margin: 12px 4px 0; color: #9292b1; text-align: center; font-size: 11px; line-height: 1.6; }
     .art-label { position: absolute; right: 2%; bottom: 1%; color: rgba(177, 167, 222, .46); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; }
     .section { position: relative; padding: 100px 0; }
     .section-heading { max-width: 700px; margin: 0 auto 48px; text-align: center; }
@@ -133,8 +131,10 @@
     .check-list li { display: flex; gap: 12px; align-items: flex-start; color: #d3d1e9; font-size: 12px; }
     .check { flex: 0 0 auto; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 7px; color: #8cf3db; background: rgba(92, 234, 197, .1); border: 1px solid rgba(92, 234, 197, .15); }
     .check svg { width: 13px; height: 13px; }
-    .mock-window { position: relative; overflow: hidden; min-height: 330px; border: 1px solid rgba(172, 153, 255, .24); border-radius: 22px; background: linear-gradient(145deg, rgba(23, 21, 51, .9), rgba(9, 10, 24, .92)); box-shadow: 0 30px 90px rgba(0,0,0,.25), 0 0 55px rgba(109, 78, 235, .09); transform: rotateY(-3deg) rotateX(1deg); transition: transform .45s ease; }
+    .mock-window { position: relative; overflow: hidden; min-width: 0; margin: 0; border: 1px solid rgba(172, 153, 255, .24); border-radius: 22px; background: #070b1e; box-shadow: 0 30px 90px rgba(0,0,0,.25), 0 0 55px rgba(109, 78, 235, .12); transform: rotateY(-3deg) rotateX(1deg); transition: transform .45s ease; }
     .mock-window:hover { transform: rotateY(0) rotateX(0) translateY(-4px); }
+    .client-screenshot { display: block; width: 100%; height: auto; }
+    .mock-window .preview-caption { padding: 11px 16px 14px; margin: 0; border-top: 1px solid rgba(172, 153, 255, .15); background: rgba(7, 8, 24, .92); }
     .window-bar { display: flex; align-items: center; gap: 7px; height: 45px; padding: 0 16px; border-bottom: 1px solid rgba(173, 159, 255, .12); background: rgba(255,255,255,.02); }
     .window-dot { width: 7px; height: 7px; border-radius: 50%; background: #6b5e9b; }
     .window-dot:first-child { background: #ff7d9d; } .window-dot:nth-child(2) { background: #e8ca72; } .window-dot:nth-child(3) { background: #76e5bf; }
@@ -183,6 +183,7 @@
     .footer { padding: 30px 0 35px; border-top: 1px solid rgba(177, 161, 255, .1); background: rgba(5, 5, 13, .27); }
     .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; color: #83819f; font-size: 10px; }
     .footer-brand { display: flex; align-items: center; gap: 9px; color: #c4b5fd; font-size: 11px; font-weight: 850; letter-spacing: .12em; }
+    .footer-brand img { width: 42px; height: 28px; object-fit: contain; mix-blend-mode: screen; filter: drop-shadow(0 0 7px rgba(139, 82, 255, .3)); }
     .footer-brand .brand-mark { width: 28px; height: 28px; border-radius: 9px; }
     .footer-brand .brand-mark svg { width: 18px; height: 18px; }
     .footer-links { display: flex; gap: 17px; }
@@ -194,7 +195,10 @@
     @keyframes breathe { 0%,100% { transform: scale(.92); opacity: .7; } 50% { transform: scale(1.1); opacity: 1; } }
     @keyframes orbit { from { transform: rotateX(67deg) rotateZ(-24deg); } to { transform: rotateX(67deg) rotateZ(336deg); } }
     @keyframes orbitReverse { from { transform: rotateX(67deg) rotateZ(53deg); } to { transform: rotateX(67deg) rotateZ(-307deg); } }
-    @keyframes planetFloat { 0%,100% { transform: translateY(0) rotateY(-5deg); } 50% { transform: translateY(-12px) rotateY(5deg); } }
+    @keyframes logoFloat { 0%,100% { transform: translate3d(0,0,0) rotate(calc(-1deg + var(--tilt-y, 0deg))) rotateY(var(--tilt-x, 0deg)) scale(1); } 50% { transform: translate3d(0,-11px,0) rotate(calc(1deg + var(--tilt-y, 0deg))) rotateY(var(--tilt-x, 0deg)) scale(1.025); } }
+    @keyframes logoGlow { 0%,100% { filter: brightness(1) saturate(1.05) drop-shadow(0 0 18px rgba(23, 125, 255, .62)) drop-shadow(0 0 42px rgba(0, 178, 255, .38)); } 50% { filter: brightness(1.14) saturate(1.28) drop-shadow(0 0 25px rgba(41, 173, 255, .82)) drop-shadow(0 0 62px rgba(112, 75, 255, .52)); } }
+    @keyframes logoShine { 0%, 12% { background-position: 130% 0; opacity: .2; } 48% { opacity: .9; } 78%, 100% { background-position: -130% 0; opacity: .25; } }
+    @keyframes logoHalo { 0%,100% { transform: scale(.92); opacity: .7; } 50% { transform: scale(1.12); opacity: 1; } }
     @keyframes cardFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
     @media (max-width: 900px) {
       .nav-links { gap: 18px; }
@@ -213,8 +217,8 @@
     @media (max-width: 640px) {
       .wrap { width: min(var(--max), calc(100% - 30px)); }
       .nav { min-height: 67px; }
-      .brand { font-size: 14px; }
-      .brand-mark { width: 34px; height: 34px; }
+      .brand { font-size: 13px; gap: 7px; }
+      .brand-logo { width: 43px; height: 30px; }
       .menu-toggle { display: grid; }
       .nav-links { position: absolute; top: calc(100% + 1px); left: 15px; right: 15px; display: none; flex-direction: column; align-items: stretch; gap: 3px; padding: 12px; border: 1px solid var(--line); border-radius: 16px; background: rgba(10, 10, 27, .97); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
       .nav-links.open { display: flex; }
@@ -228,8 +232,7 @@
       .hero-actions .btn { flex: 1 1 auto; }
       .hero-meta { gap: 11px 15px; }
       .hero-art { min-height: 335px; margin-top: 0; }
-      .planet { width: 165px; }
-      .planet-logo { font-size: 53px; }
+      .hero-logo-wrap { width: min(100%, 390px); }
       .orbital { width: min(96%, 335px); }
       .orbital.orbital-two { width: 90%; }
       .orbital.orbital-three { width: 75%; }
@@ -269,6 +272,28 @@
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
+    .license-backdrop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; background: rgba(3, 4, 16, .78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .license-backdrop[hidden] { display: none; }
+    .license-modal { width: min(100%, 470px); position: relative; overflow: hidden; padding: 30px; border: 1px solid rgba(101, 177, 255, .38); border-radius: 24px; background: radial-gradient(ellipse at top right, rgba(67, 119, 255, .18), transparent 54%), linear-gradient(145deg, #10132d, #080a19 76%); box-shadow: 0 25px 100px rgba(0,0,0,.55), 0 0 50px rgba(40, 125, 255, .13); }
+    .license-modal::before { content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, #64caff, #8978ff, transparent); }
+    .license-close { position: absolute; top: 13px; right: 13px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 11px; color: #c9c8e5; background: rgba(255,255,255,.04); cursor: pointer; font-size: 20px; }
+    .license-symbol { width: 55px; height: 55px; display: grid; place-items: center; margin-bottom: 17px; border: 1px solid rgba(81, 180, 255, .34); border-radius: 17px; color: #83d9ff; background: linear-gradient(145deg, rgba(32, 145, 255, .2), rgba(129, 81, 255, .13)); box-shadow: 0 0 28px rgba(47, 153, 255, .12); }
+    .license-symbol svg { width: 28px; height: 28px; }
+    .license-modal h2 { margin: 0 38px 9px 0; font-size: clamp(26px, 6vw, 34px); }
+    .license-modal p { margin: 0 0 21px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .license-label { display: block; margin-bottom: 8px; color: #dddafa; font-size: 12px; font-weight: 750; }
+    .license-input { width: 100%; min-height: 54px; padding: 0 14px; border: 1px solid rgba(126, 157, 255, .35); border-radius: 13px; outline: none; background: rgba(2, 6, 24, .72); color: #fff; font: 800 16px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .11em; text-transform: uppercase; transition: border-color .2s, box-shadow .2s; }
+    .license-input:focus { border-color: #60caff; box-shadow: 0 0 0 3px rgba(64, 171, 255, .13); }
+    .license-input::placeholder { color: #656987; letter-spacing: .08em; }
+    .license-counter { display: flex; justify-content: space-between; gap: 10px; margin-top: 7px; color: #777d9e; font-size: 10px; }
+    .license-error { min-height: 23px; margin-top: 10px; color: #ff879f; font-size: 12px; }
+    .license-submit { width: 100%; margin-top: 3px; }
+    .license-note { margin-top: 15px; color: #777d9e; font-size: 10px; line-height: 1.65; }
+    .license-saved { display: none; margin-top: 12px; color: #8cf3db; font-size: 11px; }
+    .license-saved.visible { display: block; }
+    @media (max-width: 640px) { .license-modal { padding: 25px 20px; } .license-input { font-size: 14px; letter-spacing: .07em; } }
+
   </style>
 </head>
 <body>
@@ -279,7 +304,7 @@
   <header class="topbar">
     <nav class="nav wrap" aria-label="Nawigacja główna">
       <a class="brand" href="#start" aria-label="VEX CLIENT — strona główna">
-        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 7h6l5 13 5-13h6L18 26h-4L5 7Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M4 27h24" stroke="#70d8ff" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <img class="brand-logo" src="vex-logo.webp" alt="Logo VEX CLIENT">
         <span>VEX <span>CLIENT</span></span>
       </a>
       <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="nav-links">
@@ -298,15 +323,15 @@
     <section class="hero" id="start">
       <div class="hero-grid wrap">
         <div class="hero-content">
-          <div class="eyebrow"><span class="live-dot"></span> Minecraft Client · Fabric</div>
-          <h1>BEYOND<br><span class="headline-gradient">THE ORDINARY.</span></h1>
+          <div class="eyebrow"><span class="live-dot"></span> Klient Minecraft · Fabric</div>
+          <h1>POZA<br><span class="headline-gradient">SCHEMATEM.</span></h1>
           <p class="hero-copy">Poznaj <strong>VEX CLIENT</strong> — modyfikację klienta Minecraft z własnym GUI, edytorem HUD i klimatem prosto z kosmosu. Twoja rozgrywka. Twój styl. Twoja galaktyka.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="vex-client-1.21.4-1.0.0.jar" download="vex-client-1.21.4-1.0.0.jar">
+            <a class="btn btn-primary" href="vex-client-1.21.4-1.0.0.jar" download="vex-client-1.21.4-1.0.0.jar" data-licensed-download>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></svg>
               Pobierz VEX CLIENT
             </a>
-            <a class="btn btn-secondary" href="#funkcje">Odkryj funkcje <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-secondary" href="#funkcje">Poznaj funkcje <span aria-hidden="true">↓</span></a>
           </div>
           <div class="hero-meta">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 2.8 5.7L21 9.6l-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></svg> Wersja 1.0.0</span>
@@ -314,12 +339,12 @@
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 7v5c0 5 3.4 7.8 8 9 4.6-1.2 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg> Fabric</span>
           </div>
         </div>
-        <div class="hero-art" aria-label="Galaktyczne logo VEX CLIENT">
+        <div class="hero-art" aria-label="Oryginalne logo VEX CLIENT w galaktycznej oprawie">
           <div class="orbital"></div><div class="orbital orbital-two"></div><div class="orbital orbital-three"></div>
-          <div class="planet"><div class="planet-ring"></div><div class="planet-logo">VEX</div></div>
-          <div class="float-card card-top"><span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 3.5 8v8l8.5 5 8.5-5V8L12 3Z"/><path d="m3.5 8 8.5 5 8.5-5M12 13v8"/></svg></span><span><strong>GALAXY MODE</strong><small>Atmosfera bez granic</small></span></div>
-          <div class="float-card card-bottom"><span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 8h8M8 12h4M8 16h7"/></svg></span><span><strong>HUD EDITOR</strong><small>Ustaw po swojemu</small></span></div>
-          <div class="art-label">EXPLORE THE UNKNOWN · VEX 1.0.0</div>
+          <div class="hero-logo-wrap"><img class="hero-client-logo" src="vex-logo.webp" alt="Logo VEX CLIENT z galaktycznym tłem"></div>
+          <div class="float-card card-top"><span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 3.5 8v8l8.5 5 8.5-5V8L12 3Z"/><path d="m3.5 8 8.5 5 8.5-5M12 13v8"/></svg></span><span><strong>TRYB GALAKTYCZNY</strong><small>Kosmiczny klimat</small></span></div>
+          <div class="float-card card-bottom"><span class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 8h8M8 12h4M8 16h7"/></svg></span><span><strong>EDYTOR HUD</strong><small>Dopasuj do siebie</small></span></div>
+          <div class="art-label">VEX CLIENT · GALAKTYCZNY WYGLĄD</div>
         </div>
       </div>
     </section>
@@ -332,12 +357,12 @@
           <p>Przejrzysty interfejs, swoboda konfiguracji i kosmiczny klimat. Oto najważniejsze elementy VEX CLIENT.</p>
         </div>
         <div class="feature-grid">
-          <article class="feature-card reveal"><span class="feature-tag">01 / INTERFACE</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg></div><h3>Własne GUI</h3><p>Panel VEX z charakterystycznym wyglądem i wygodnym dostępem do ustawień klienta.</p></article>
-          <article class="feature-card reveal delay-1"><span class="feature-tag">02 / CUSTOM</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v14H4z"/><path d="M8 9h.01M12 9h.01M16 9h.01M8 13h8M8 16h5"/></svg></div><h3>Własne bindy</h3><p>Obsługa własnych przypisań klawiszy, aby szybciej uruchamiać wybrane opcje.</p></article>
+          <article class="feature-card reveal"><span class="feature-tag">01 / INTERFEJS</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/></svg></div><h3>Własne GUI</h3><p>Panel VEX z charakterystycznym wyglądem i wygodnym dostępem do ustawień klienta.</p></article>
+          <article class="feature-card reveal delay-1"><span class="feature-tag">02 / PERSONALIZACJA</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v14H4z"/><path d="M8 9h.01M12 9h.01M16 9h.01M8 13h8M8 16h5"/></svg></div><h3>Własne bindy</h3><p>Obsługa własnych przypisań klawiszy, aby szybciej uruchamiać wybrane opcje.</p></article>
           <article class="feature-card reveal delay-2"><span class="feature-tag">03 / HUD</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h6v6H4zM14 4h6v4h-6zM14 12h6v8h-6zM4 14h6v6H4z"/></svg></div><h3>Edytor HUD</h3><p>Przesuwaj elementy interfejsu i dopasuj układ HUD do własnych preferencji.</p></article>
-          <article class="feature-card reveal"><span class="feature-tag">04 / ATMOSPHERE</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></svg></div><h3>Galaktyczny klimat</h3><p>Kosmiczne niebo i ambientowe cząsteczki, które nadają rozgrywce wyjątkową atmosferę.</p></article>
-          <article class="feature-card reveal delay-1"><span class="feature-tag">05 / CONTROL</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="5"/></svg></div><h3>Ustawienia klienta</h3><p>Opcje i komendy dostępne z poziomu klienta, bez konieczności szukania ich poza grą.</p></article>
-          <article class="feature-card reveal delay-2"><span class="feature-tag">06 / VISUALS</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="m4 4 2 2m14-2-2 2"/></svg></div><h3>Efekty wizualne</h3><p>Dodatkowe wizualizacje i efekty trafień zawarte w tej wersji klienta.</p></article>
+          <article class="feature-card reveal"><span class="feature-tag">04 / ATMOSFERA</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2Z"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></svg></div><h3>Galaktyczny klimat</h3><p>Kosmiczne niebo i ambientowe cząsteczki, które nadają rozgrywce wyjątkową atmosferę.</p></article>
+          <article class="feature-card reveal delay-1"><span class="feature-tag">05 / STEROWANIE</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"/><circle cx="12" cy="12" r="5"/></svg></div><h3>Ustawienia klienta</h3><p>Opcje i komendy dostępne z poziomu klienta, bez konieczności szukania ich poza grą.</p></article>
+          <article class="feature-card reveal delay-2"><span class="feature-tag">06 / WIZUALIZACJE</span><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="m4 4 2 2m14-2-2 2"/></svg></div><h3>Efekty wizualne</h3><p>Dodatkowe wizualizacje i efekty trafień zawarte w tej wersji klienta.</p></article>
         </div>
       </div>
     </section>
@@ -354,13 +379,26 @@
             <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12 4 4L19 6"/></svg></span><span>Klient przeznaczony dla Minecraft Java 1.21.4.</span></li>
           </ul>
         </div>
-        <div class="mock-window reveal delay-1" aria-label="Dekoracyjna wizualizacja interfejsu VEX CLIENT">
-          <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">VEX CLIENT / CONTROL</span></div>
+        <figure class="mock-window reveal delay-1" aria-label="Poglądowa wizualizacja interfejsu VEX CLIENT">
+          <div class="window-bar" aria-hidden="true"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">VEX CLIENT / PANEL</span></div>
           <div class="mock-body">
-            <aside class="mock-side"><div class="mock-logo">VEX CLIENT</div><div class="mock-nav active"><span></span> Dashboard</div><div class="mock-nav"><span></span> Visuals</div><div class="mock-nav"><span></span> HUD Editor</div><div class="mock-nav"><span></span> Controls</div><div class="mock-nav"><span></span> Settings</div></aside>
-            <div class="mock-content"><h3>Welcome back.</h3><p class="sub">YOUR CLIENT. YOUR UNIVERSE.</p><div class="mock-feature"><span><strong>Galaxy ambience</strong><small>Atmosphere & particles</small></span><span class="toggle"></span></div><div class="mock-feature"><span><strong>Custom HUD</strong><small>Movable interface elements</small></span><span class="toggle"></span></div><div class="mock-feature"><span><strong>Keybinds</strong><small>Personal controls</small></span><span class="toggle"></span></div></div>
+            <aside class="mock-side" aria-label="Przykładowe menu klienta">
+              <div class="mock-logo">VEX CLIENT</div>
+              <div class="mock-nav active"><span></span>Główne</div>
+              <div class="mock-nav"><span></span>Wizualne</div>
+              <div class="mock-nav"><span></span>HUD</div>
+              <div class="mock-nav"><span></span>Sterowanie</div>
+            </aside>
+            <div class="mock-content">
+              <h3>Panel klienta</h3>
+              <p class="sub">Dostosuj VEX do swojego stylu gry</p>
+              <div class="mock-feature"><span><strong>Ustawienia wizualne</strong><small>Personalizuj wygląd interfejsu</small></span><span class="toggle" aria-hidden="true"></span></div>
+              <div class="mock-feature"><span><strong>Elementy HUD</strong><small>Wybierz widoczne elementy</small></span><span class="toggle" aria-hidden="true"></span></div>
+              <div class="mock-feature"><span><strong>Efekty i animacje</strong><small>Dopasuj efekt do swoich preferencji</small></span><span class="toggle" aria-hidden="true"></span></div>
+            </div>
           </div>
-        </div>
+          <figcaption class="preview-caption">Poglądowa wizualizacja interfejsu — nie jest to zrzut ekranu z gry.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -375,7 +413,7 @@
               <div class="specs"><span class="spec">Wersja: <b>1.0.0</b></span><span class="spec">Minecraft: <b>1.21.4</b></span><span class="spec">Loader: <b>Fabric</b></span><span class="spec">Format: <b>.JAR</b></span></div>
             </div>
             <div class="download-action">
-              <a class="btn btn-primary" href="vex-client-1.21.4-1.0.0.jar" download="vex-client-1.21.4-1.0.0.jar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></svg> Pobierz plik .JAR</a>
+              <a class="btn btn-primary" href="vex-client-1.21.4-1.0.0.jar" download="vex-client-1.21.4-1.0.0.jar" data-licensed-download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></svg> Pobierz plik .JAR</a>
               <small>VEX CLIENT · 1.21.4 · v1.0.0</small>
             </div>
           </div>
@@ -398,6 +436,7 @@
       <div class="wrap">
         <div class="section-heading reveal"><span class="section-kicker">FAQ</span><h2>Masz pytanie?</h2><p>Najważniejsze informacje przed instalacją.</p></div>
         <div class="faq-list reveal">
+          <details><summary>Jak otworzyć menu VEX CLIENT?</summary><p>Domyślnie menu VEX CLIENT otwiera się klawiszem <strong>N</strong>. Możesz zmienić to przypisanie w ustawieniach sterowania Minecrafta, w sekcji przypisań klawiszy.</p></details>
           <details><summary>Do jakiej wersji Minecrafta jest VEX CLIENT?</summary><p>Do Minecraft Java Edition 1.21.4. Plik zawiera metadane moda deklarujące zależność od tej wersji Minecrafta.</p></details>
           <details><summary>Czy potrzebuję Fabric?</summary><p>Tak. Mod wymaga Fabric Loader w wersji co najmniej 0.16.10 oraz Fabric API. Sam plik JAR nie zastępuje loadera ani API.</p></details>
           <details><summary>Gdzie wrzucić pobrany plik?</summary><p>Do folderu <code>.minecraft/mods</code>. Jeśli folder nie istnieje, najpierw uruchom profil Fabric przynajmniej raz, a potem sprawdź katalog gry.</p></details>
@@ -409,11 +448,30 @@
 
   <footer class="footer">
     <div class="footer-inner wrap">
-      <a class="footer-brand" href="#start"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 7h6l5 13 5-13h6L18 26h-4L5 7Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M4 27h24" stroke="#70d8ff" stroke-width="1.5" stroke-linecap="round"/></svg></span> VEX CLIENT</a>
+      <a class="footer-brand" href="#start"><img src="vex-logo.webp" alt="" aria-hidden="true"> VEX CLIENT</a>
       <span>© <span id="year"></span> VEX CLIENT. Stworzone dla Minecraft Java.</span>
       <div class="footer-links"><a href="#pobierz">Pobieranie</a><a href="#instalacja">Instalacja</a><a href="#start">Na górę ↑</a></div>
     </div>
   </footer>
+
+
+  <div class="license-backdrop" id="licenseBackdrop" hidden aria-hidden="true">
+    <section class="license-modal" role="dialog" aria-modal="true" aria-labelledby="licenseTitle" aria-describedby="licenseDescription">
+      <button class="license-close" id="licenseClose" type="button" aria-label="Zamknij okno">×</button>
+      <div class="license-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 5 3.5 7.8 8 9 4.5-1.2 8-4 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <span class="section-kicker">VEX CLIENT · LICENCJA</span>
+      <h2 id="licenseTitle">Odblokuj pobieranie.</h2>
+      <p id="licenseDescription">Wpisz 16-znakowy klucz licencyjny. Po poprawnej aktywacji ta przeglądarka zapamięta licencję i kolejne pobrania będą dostępne bez ponownego wpisywania kodu.</p>
+      <form id="licenseForm" novalidate>
+        <label class="license-label" for="licenseCode">Kod licencyjny</label>
+        <input class="license-input" id="licenseCode" name="licenseCode" type="text" minlength="16" maxlength="16" pattern="[A-Za-z0-9]{16}" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="D82JF82NC9QPA0YM" required aria-describedby="licenseError licenseCounter">
+        <div class="license-counter"><span>Tylko litery A–Z i cyfry 0–9</span><span id="licenseCounter">0 / 16</span></div>
+        <div class="license-error" id="licenseError" role="status" aria-live="polite"></div>
+        <button class="btn btn-primary license-submit" id="licenseSubmit" type="submit">Aktywuj licencję i pobierz</button>
+      </form>
+      <div class="license-note">Aktywacja zostaje zapisana lokalnie w tej przeglądarce. To blokada front-endowa — nie jest to globalna, serwerowa kontrola licencji.</div>
+    </section>
+  </div>
 
   <script>
     (() => {
@@ -496,6 +554,24 @@
           glow.style.top = event.clientY + 'px';
         }
       }, { passive: true });
+
+      // Subtelny ruch 3D logo reagujący na położenie kursora.
+      const heroArt = document.querySelector('.hero-art');
+      const heroLogoWrap = document.querySelector('.hero-logo-wrap');
+      if (heroArt && heroLogoWrap && !reduceMotion) {
+        heroArt.addEventListener('pointermove', (event) => {
+          if (event.pointerType === 'touch') return;
+          const rect = heroArt.getBoundingClientRect();
+          const px = (event.clientX - rect.left) / rect.width - 0.5;
+          const py = (event.clientY - rect.top) / rect.height - 0.5;
+          heroLogoWrap.style.setProperty('--tilt-x', `${(px * 9).toFixed(2)}deg`);
+          heroLogoWrap.style.setProperty('--tilt-y', `${(-py * 6).toFixed(2)}deg`);
+        }, { passive: true });
+        heroArt.addEventListener('pointerleave', () => {
+          heroLogoWrap.style.setProperty('--tilt-x', '0deg');
+          heroLogoWrap.style.setProperty('--tilt-y', '0deg');
+        }, { passive: true });
+      }
       const updateProgress = () => {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         progress.style.width = (max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0) + '%';
@@ -528,7 +604,110 @@
       } else {
         revealEls.forEach(el => el.classList.add('visible'));
       }
-      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Licensing gate for GitHub Pages. Hashes are stored instead of plain codes,
+      // but a static site cannot enforce global one-time activation without a backend.
+      const LICENSE_HASHES = new Set([
+        '2ed3b27e045b66dcab361c09135602776ddddf1a372e075834c97f94fb731cc7',
+        '8d474770183b9bb0062896c128bde08985b03c25362ed7ad523e4a656d5d6c90',
+        '9a47c58dc9bc5ff355132b2547519e717ff06e5c5344b34c201a7ff57017f0d5',
+        '427c605749c9a645899426a6074d91b6df486c0886a57f59d4586939c09984d9',
+        'f3bb7947e48ed564632f62a3335d2db8bc249774fcd14e7792c076046ce78123',
+        'c4e0103c21c1cc24cbd1f1024304e00f18e9394f6c6129a6857f1cc3bbf3f150',
+        '5cac3527e0af2c164aa426c84782443a5e5e21f2897751f723c487028152a863',
+        'd6541bc4aaa5c2aa671c7990697d9a172c75de1f72941200d2adf85009114cb4',
+        'd52362e086ca8bdd160560f9650c0568bad6d375000622865f573faacd2f8e0f',
+        'e384b48b77f5d63bf00dab0979444ebc5cddabb73ff3009ef4f3d15eb23e1c58',
+        '1c16cb509b1166c0468c77228b7e01f9cb2a2fe232808eb3f1d570a88e3c4244',
+        'bc69fdaf770cbbefe4bfb9b8c42d0b2538080e8730a06ecc19ab5788bb077ef7',
+        'e61dfaf513d544394568af4830ee02d51fc8fb0008275d636d792729b68bbf9f',
+        '331c73286f65e83f4d821693e10a0223c3ca7f49d71691eaeec999ecc5d40e6c',
+        'c0e80f3af1916b27041c38d78909885e8718cafc90d43a1b3a97cc50c6cde124',
+        '2fc36b9d85d2610bd12869c0e113e631fa0784457f0296dc64d0da4f7cb5875e',
+        'dc8ce3591cd356cf6576b36538bcfd03c849f6ba188d7d266d3808e24a8ece69',
+        'ce0807558c831c148481c156d721b57cd4641018454b15f6ad62d319a4ec2137',
+        '89b3e664f235eb8470890c56c440abe83e929521ede81c60642d7f0bb77a29b1',
+        'bb017d8a0a40fe6d1be7d00edcf53728e18b829d18df5de7945cf4aafb04d5c5',
+        'da141c03bab05b23327b463b471ea6f44b009b71c7a59bf4732dc7ed65945132',
+        '288703837cac0c74eb7a416f9ffb12f80e0ea323b06fbfd5c37425849aaf286b',
+        '22e19a51ace6239af066b62cccff598069537606a72715ec607fe0160ac5fe7e',
+        '4862b91b821f00437b3215c8b063dfd0737af048f93ae8c4814a270a9faf6068',
+        'd5d9588f8fc521c881ba346fecb93ede0906ce7929aa8e424ab06f2aa3aa900b',
+        'db6ea2981cd20606b9c7333287aec6851bc80fa11c036f339310c54127232ee7',
+        '1b30168827f1cfe331c47771dfd2e65e224638c1428891a636f3087c4877f881',
+        '73b04e70957328a26069b00a3277f1d878be2a3a5c3243f13b5fd65a7c14a228',
+        '83e290efa9689fd691f09a8e103f63f786659747eb5200d017cb3d8c029f450b',
+        'd9fc243a27aa599087507fb6f517d101378c64fde6a1524d93e9397e3c4d6ddc'
+      ]);
+      const LICENSE_STORAGE_KEY = 'vexClientLicenseV1';
+      const backdrop = document.getElementById('licenseBackdrop');
+      const licenseForm = document.getElementById('licenseForm');
+      const licenseInput = document.getElementById('licenseCode');
+      const licenseError = document.getElementById('licenseError');
+      const licenseCounter = document.getElementById('licenseCounter');
+      const licenseSubmit = document.getElementById('licenseSubmit');
+      const downloadLinks = [...document.querySelectorAll('[data-licensed-download]')];
+      const storedLicense = () => { try { return localStorage.getItem(LICENSE_STORAGE_KEY); } catch (_) { return null; } };
+      const isActivated = () => { const v = storedLicense(); return !!v && LICENSE_HASHES.has(v); };
+      const showLicense = () => {
+        if (isActivated()) { triggerDownload(); return; }
+        backdrop.hidden = false; backdrop.setAttribute('aria-hidden', 'false');
+        licenseError.textContent = ''; licenseInput.value = ''; licenseCounter.textContent = '0 / 16';
+        window.setTimeout(() => licenseInput.focus(), 30);
+      };
+      const hideLicense = () => { backdrop.hidden = true; backdrop.setAttribute('aria-hidden', 'true'); };
+      const triggerDownload = () => {
+        const a = document.createElement('a');
+        a.href = 'vex-client-1.21.4-1.0.0.jar';
+        a.download = 'vex-client-1.21.4-1.0.0.jar';
+        a.style.display = 'none'; document.body.appendChild(a); a.click(); a.remove();
+      };
+      const sha256 = async (value) => {
+        if (!window.crypto || !crypto.subtle) throw new Error('SECURE_CONTEXT_REQUIRED');
+        const bytes = new TextEncoder().encode(value);
+        const digest = await crypto.subtle.digest('SHA-256', bytes);
+        return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, '0')).join('');
+      };
+      downloadLinks.forEach(link => link.addEventListener('click', event => {
+        if (!isActivated()) { event.preventDefault(); showLicense(); }
+        // When activated, the original download link proceeds normally.
+      }));
+      licenseInput.addEventListener('input', () => {
+        const normalized = licenseInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 16);
+        if (licenseInput.value !== normalized) licenseInput.value = normalized;
+        licenseCounter.textContent = normalized.length + ' / 16'; licenseError.textContent = ''; licenseInput.removeAttribute('aria-invalid');
+      });
+      licenseForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const code = licenseInput.value.trim().toUpperCase();
+        if (!/^[A-Z0-9]{16}$/.test(code)) { licenseError.textContent = 'Kod musi mieć dokładnie 16 znaków (A–Z, 0–9).'; return; }
+        licenseSubmit.disabled = true; licenseSubmit.textContent = 'Sprawdzanie kodu…';
+        try {
+          const digest = await sha256(code);
+          if (!LICENSE_HASHES.has(digest)) { licenseError.textContent = 'Nieprawidłowy kod licencyjny. Sprawdź kod i spróbuj ponownie.'; licenseInput.setAttribute('aria-invalid', 'true'); return; }
+          try { localStorage.setItem(LICENSE_STORAGE_KEY, digest); localStorage.setItem(LICENSE_STORAGE_KEY + '_activatedAt', new Date().toISOString()); licenseInput.removeAttribute('aria-invalid'); }
+          catch (_) { licenseError.textContent = 'Przeglądarka nie pozwoliła zapisać licencji. Włącz pamięć lokalną i spróbuj ponownie.'; return; }
+          addSavedNotice();
+          hideLicense();
+          triggerDownload();
+        } catch (_) { licenseError.textContent = 'Weryfikacja wymaga strony otwartej przez HTTPS (np. GitHub Pages).'; }
+        finally { licenseSubmit.disabled = false; licenseSubmit.textContent = 'Aktywuj licencję i pobierz'; }
+      });
+      document.getElementById('licenseClose').addEventListener('click', hideLicense);
+      backdrop.addEventListener('click', event => { if (event.target === backdrop) hideLicense(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && !backdrop.hidden) hideLicense(); });
+      // Show the saved-license state after activation and on later visits.
+      function addSavedNotice() {
+        const action = document.querySelector('.download-action');
+        if (!action || action.querySelector('.license-saved')) return;
+        const note = document.createElement('div');
+        note.className = 'license-saved visible';
+        note.textContent = '✓ Licencja zapisana w tej przeglądarce — możesz pobierać bez ponownej aktywacji.';
+        action.appendChild(note);
+      }
+      if (isActivated()) addSavedNotice();
+
+            document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
 </body>
